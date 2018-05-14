@@ -23,14 +23,25 @@
                 text-align: center;
                 font-size: 32px;
                 padding: 1em 0;
-                margin-bottom: 1.5em;
             }
 
             header a {
                 color: #eee;
             }
 
+            nav {
+                display: flex;
+                justify-content: center;
+                background: #eee;
+            }
+
+            nav a {
+                display: block;
+                padding: 10px 20px;
+            }
+
             .container {
+                padding-top: 20px;
                 width: 700px;
                 margin: 0 auto;
             }
@@ -61,6 +72,11 @@
         <header>
             <a href="/">xy2z Laravel 5.6 Blog</a>
         </header>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/news/create">Create Post</a>
+        </nav>
 
         <div class="container">
             @yield('content')
