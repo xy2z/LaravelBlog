@@ -19,11 +19,15 @@
 
             header {
                 background: #444;
-                color: #eee;
+                /*color: #eee;*/
                 text-align: center;
                 font-size: 32px;
                 padding: 1em 0;
                 margin-bottom: 1.5em;
+            }
+
+            header a {
+                color: #eee;
             }
 
             .container {
@@ -55,7 +59,7 @@
 
     <body>
         <header>
-            xy2z Laravel 5.6 Blog
+            <a href="/">xy2z Laravel 5.6 Blog</a>
         </header>
 
         <div class="container">
