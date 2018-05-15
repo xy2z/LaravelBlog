@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('welcome', [
+        return view('news_index', [
             'news' => News::latest()->get()
         ]);
     }

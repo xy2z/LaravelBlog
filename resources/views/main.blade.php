@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
         <title>@yield('title') | xy2z Blog</title>
@@ -15,6 +16,10 @@
 
             body {
                 font-family: Tahoma;
+            }
+
+            * {
+                box-sizing: border-box;
             }
 
             header {
@@ -41,7 +46,7 @@
             }
 
             .container {
-                padding-top: 20px;
+                padding: 20px;
                 width: 700px;
                 margin: 0 auto;
             }
@@ -56,14 +61,30 @@
             }
 
             hr {
+                width: 100%;
                 border: 0;
                 height: 1px;
                 background: #ccc;
             }
 
+            input {
+                width: 100%;
+            }
+
+            textarea {
+                width: 100%;
+                height: 400px;
+            }
+
             .date {
                 font-size: 0.8em;
                 color: #999;
+            }
+
+            @media only all and (max-width: 700px) {
+                .container {
+                    width: 100%;
+                }
             }
         </style>
     </head>
@@ -75,7 +96,10 @@
 
         <nav>
             <a href="/">Home</a>
-            <a href="/news/create">Create Post</a>
+            @if (Auth::check())
+                <a href="/news/create">Create Post</a>
+                <a href="/logout">Logout ({{ Auth::user()->name }})</a>
+            @endif
         </nav>
 
         <div class="container">
