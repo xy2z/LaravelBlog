@@ -81,6 +81,17 @@
                 color: #999;
             }
 
+            .admin_bar {
+                background: #ffc;
+                padding: 8px;
+                font-size: 0.9em;
+                opacity: 0.6;
+            }
+
+            .admin_bar:hover {
+                opacity: 1;
+            }
+
             @media only all and (max-width: 700px) {
                 .container {
                     width: 100%;
@@ -97,11 +108,18 @@
 
         <nav>
             <a href="/">Home</a>
+            <a target="_blank" href="/feed">Feed</a>
             @if (Auth::check())
                 <a href="/news/create">Create Post</a>
                 <a href="/logout">Logout ({{ Auth::user()->name }})</a>
             @endif
         </nav>
+
+        @if ($flash = session('message'))
+            <div class="alert">
+                {{ $flash }}
+            </div>
+        @endif
 
         <div class="container">
             @yield('content')

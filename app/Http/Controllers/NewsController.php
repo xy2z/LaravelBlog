@@ -28,7 +28,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('news_index', [
+        return view('news.index', [
             'news' => News::latest()->get()
         ]);
     }
@@ -55,6 +55,7 @@ class NewsController extends Controller
 
         $valid = Validator::make($request->all(), [
             'title' => 'required|min:2|max:255',
+            'pretty_url' => 'required|min:2|max:255',
             'body' => 'required|min:2'
         ]);
 
@@ -64,6 +65,7 @@ class NewsController extends Controller
 
         $new = new News();
         $new->title = $request->title;
+        $new->pretty_url = $request->pretty_url;
         $new->body = $request->body;
         $new->user_id = 1;
         $new->save();
@@ -80,7 +82,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        return view('news_item', [
+        return view('news.show', [
             'news' => $news
         ]);
     }
@@ -93,7 +95,9 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        //
+        return view('news.edit', [
+            'news' => $news
+        ]);
     }
 
     /**
@@ -105,7 +109,11 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        $news->title = $request->title;
+        $news->body = $request->body;
+        $news->save();
+
+        return redirect()->route('home');
     }
 
     /**

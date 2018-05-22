@@ -4,6 +4,13 @@
 
 @section('content')
 
+    @if (Auth::check())
+        <div class="admin_bar">
+            <strong>Admin</strong>:
+            <a href="/news/edit/{{ $news->id }}">Edit this post</a>
+        </div>
+    @endif
+
     <h1>{{ $news->title }}</h1>
 
     {{--
