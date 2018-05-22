@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use Validator;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -10,6 +11,14 @@ class NewsController extends Controller
 
     public function __construct() {
         $this->middleware('auth')->except(['index', 'show']);
+    }
+
+
+    public function feed() {
+        $view = view('feed', [
+            'news' => News::latest()->limit(2)->get()
+        ]);
+        return response($view)->header('Content-Type', 'application/rss+xml');
     }
 
     /**
@@ -23,6 +32,7 @@ class NewsController extends Controller
             'news' => News::latest()->get()
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -42,6 +52,16 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
+
+        $valid = Validator::make($request->all(), [
+            'title' => 'required|min:2|max:255',
+            'body' => 'required|min:2'
+        ]);
+
+        if ($valid->fails()) {
+            return redirect('news/create')->withErrors($valid)->withInput();
+        }
+
         $new = new News();
         $new->title = $request->title;
         $new->body = $request->body;

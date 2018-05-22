@@ -87,6 +87,7 @@
                 }
             }
         </style>
+        <link rel="stylesheet" type="text/css" href="/css/errors.css">
     </head>
 
     <body>

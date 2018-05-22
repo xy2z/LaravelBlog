@@ -1,0 +1,11 @@
+.errors {
+	background: #faa;
+	padding: 12px;
+	margin-bottom: 1em;
+}
+
+
+.error_item {
+	display: block;
+	line-height: 1.5em;
+}
