@@ -10,7 +10,7 @@ class NewsController extends Controller
 {
 
     public function __construct() {
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth')->except(['index', 'show', 'feed']);
     }
 
 
@@ -29,7 +29,7 @@ class NewsController extends Controller
     public function index()
     {
         return view('news.index', [
-            'news' => News::latest()->get()
+            'news' => News::with('categories')->latest()->get()
         ]);
     }
 

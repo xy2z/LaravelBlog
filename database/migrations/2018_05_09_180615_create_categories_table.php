@@ -15,9 +15,26 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('title')->unique();
             $table->timestamps();
         });
+
+        // Test data
+        if (env('APP_ENV') == 'local') {
+            $cat = new \App\Categories;
+            $cat->title = 'Linux';
+            $cat->save();
+
+            $cat = new \App\Categories;
+            $cat->title = 'Tutorial';
+            $cat->save();
+
+
+            // Attach news_id 1 with category_id 1.
+            $post = \App\News::first();
+            $category = \App\Categories::first();
+            $post->categories()->attach($category);
+        }
     }
 
     /**

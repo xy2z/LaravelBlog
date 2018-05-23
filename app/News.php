@@ -7,8 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class News extends Model
 {
 
-	protected $primaryKey = 'pretty_url';
-	public $incrementing  = false;
+	// protected $primaryKey = 'pretty_url';
+	// public $incrementing  = false;
+
+	public function categories() {
+		// Any post may have many categories
+		// Any categories may have many post.
+		return $this->belongsToMany(Categories::class, 'news_categories', 'news_id', 'category_id');
+	}
 
     public function body_snippet() {
     	$snippet = strip_tags($this->body);
@@ -18,5 +24,9 @@ class News extends Model
 		}
 
 		return $snippet;
+    }
+
+    public function getRouteKeyName() {
+    	return 'pretty_url';
     }
 }

@@ -37,6 +37,10 @@ class LoginController extends Controller
             session()->flash('message', 'Welcome back');
 
             return redirect()->route('post.create');
+        } else {
+            // Bad login.
+            $errors['message'] = 'Invalid username/password.';
+            return redirect()->back()->withErrors($errors)->withInput();
         }
     }
 

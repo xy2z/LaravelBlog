@@ -18,6 +18,9 @@ Route::get('/news/{news}', 'NewsController@show');
 // News RSS Feed
 Route::get('/feed', 'NewsController@feed')->name('feed');
 
+// Tags
+Route::get('/news/tags/{category}', 'CategoriesController@index');
+
 // Auth
 Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/login', 'LoginController@store');
