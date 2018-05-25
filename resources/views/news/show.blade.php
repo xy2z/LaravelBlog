@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layout')
 
 @section('title', $news->title)
 
@@ -14,12 +14,13 @@
     <h1>{{ $news->title }}</h1>
 
     <div style="font-size: 0.9em; margin-bottom: 1em; color: #999;">
-        Written {{ $news->created_at->format('M j. Y, H:i') }}
+        {{ $news->created_at->format('M j, Y') }}
     </div>
 
-    {!! $news->body !!}
+    <div id="news_body">
+        {!! $news->body !!}
+    </div>
 
-    <br />
     @include('news._back')
 
 @endsection

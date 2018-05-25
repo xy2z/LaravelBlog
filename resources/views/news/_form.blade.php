@@ -1,16 +1,16 @@
 {{ csrf_field() }}
 
-Title:<br />
-<input type="text" name="title" value="{{ old('title', $news->title ?? '') }}" />
+<label for="form_title">Title</label>
+<input type="text" name="title" id="form_title" autofocus value="{{ old('title', $news->title ?? '') }}" />
 <br />
 
 <br />
 
-URL:<br />
-<input type="text" name="pretty_url" value="{{ old('pretty_url', $news->pretty_url ?? '') }}" {{ isset($edit) ? 'disabled="disabled' : '' }} />
+<label for="form_pretty_url">URL</label>
+<input type="text" name="pretty_url" id="form_pretty_url" value="{{ old('pretty_url', $news->pretty_url ?? '') }}" {{ isset($edit) ? 'disabled="disabled' : '' }} />
 <br />
 
 <br />
 
-Body:<br />
+<label for="form_pretty_url">Body</label>
 <textarea name="body">{{ old('body', $news->body ?? '') }}</textarea>

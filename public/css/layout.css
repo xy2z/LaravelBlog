@@ -1,0 +1,128 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-size: 16px;
+}
+
+body {
+    font-family: Tahoma;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background: #444;
+    /*color: #eee;*/
+    text-align: center;
+    font-size: 32px;
+    padding: 1em 0;
+}
+
+header a {
+    color: #eee;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background: #eee;
+}
+
+nav a {
+    display: block;
+    padding: 10px 20px;
+}
+
+.container {
+    padding: 20px;
+    width: 700px;
+    margin: 0 auto;
+}
+
+a {
+    color: #07f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background: #ccc;
+}
+
+input {
+}
+
+textarea {
+    height: 400px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+label {
+    color: #888;
+}
+
+.date {
+    font-size: 0.8em;
+    color: #999;
+}
+
+.admin_bar {
+    background: #ffc;
+    padding: 8px;
+    font-size: 0.9em;
+    opacity: 0.6;
+}
+
+.admin_bar:hover {
+    opacity: 1;
+}
+
+
+h1 {
+    font-size: 1.7em;
+    font-family: Montserrat;
+}
+
+h2 {
+    font-size: 1.45em;
+    font-family: Montserrat;
+}
+
+h2 a {
+    color: #000;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+p {
+    line-height: 1.8em;
+    margin-bottom: 1.8em !important;
+}
+
+#news_body {
+    font-family: Tinos;
+}
+
+@media only all and (max-width: 700px) {
+    .container {
+        width: 100%;
+    }
+}
