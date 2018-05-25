@@ -10,7 +10,7 @@
                 No tags...
             @endforelse
         </div>
-        <div class="body">{{ strip_tags($row->body_snippet()) }}</div>
+        <div class="body">{!! strip_tags($row->body_snippet()) !!}</div>
     </article>
 @empty
     No posts...

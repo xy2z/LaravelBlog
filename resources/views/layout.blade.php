@@ -8,9 +8,9 @@
         @yield('css')
         <title>@yield('title') | xy2z Blog</title>
 
-        {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet"> --}}
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:500|Tinos" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/css/layout.css">
+        <link rel="stylesheet" type="text/css" href="/css/footer.css">
         <link rel="stylesheet" type="text/css" href="/css/errors.css">
     </head>
 
@@ -37,6 +37,10 @@
         <div class="container">
             @yield('content')
         </div>
+
+        <footer>
+            Footer goes here.
+        </footer>
 
         @yield('scripts')
     </body>

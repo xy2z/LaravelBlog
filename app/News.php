@@ -16,6 +16,10 @@ class News extends Model
 		return $this->belongsToMany(Categories::class, 'news_categories', 'news_id', 'category_id');
 	}
 
+	public function categories_string() {
+		return implode(', ', $this->categories->pluck('title')->all());
+	}
+
     public function body_snippet() {
     	$snippet = strip_tags($this->body);
 

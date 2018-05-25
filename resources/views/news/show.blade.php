@@ -13,8 +13,13 @@
 
     <h1>{{ $news->title }}</h1>
 
-    <div style="font-size: 0.9em; margin-bottom: 1em; color: #999;">
-        {{ $news->created_at->format('M j, Y') }}
+    <div class="details">
+        <div class="date">{{ $news->created_at->format('M j, Y') }}</div>
+        @forelse ($news->categories as $category)
+            <a href="/news/tags/{{ strtolower($category->title) }}">{{ $category->title }}</a>
+        @empty
+            No tags...
+        @endforelse
     </div>
 
     <div id="news_body">

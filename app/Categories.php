@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categories extends Model
 {
+
+	protected $fillable = ['title'];
+
     public function getRouteKeyName() {
     	return 'title';
     }

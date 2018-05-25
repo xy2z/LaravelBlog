@@ -52,7 +52,6 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-
         $valid = Validator::make($request->all(), [
             'title' => 'required|min:2|max:255',
             'pretty_url' => 'required|min:2|max:255',
@@ -63,15 +62,53 @@ class NewsController extends Controller
             return redirect('news/create')->withErrors($valid)->withInput();
         }
 
-        $new = new News();
-        $new->title = $request->title;
-        $new->pretty_url = $request->pretty_url;
-        $new->body = $request->body;
-        $new->user_id = 1;
-        $new->save();
+        $post = new News();
+        $post->title = $request->title;
+        $post->pretty_url = $request->pretty_url;
+        $post->body = $request->body;
+        $post->user_id = 1;
+        $post->save();
+
+        $this->save_tags($request, $post);
 
         // Redirect to home.
         return redirect('/');
+    }
+
+    private function save_tags(Request $request, News $post) {
+        if (empty($request->tags)) {
+            // Remove all tags from this post (if any).
+            $post->categories()->detach();
+            return;
+        }
+
+        // Request has tags.
+        // Format tags.
+        $tags = explode(',', $request->tags);
+        foreach ($tags as $key => $tag) {
+            $tags[$key] = trim($tag);
+        }
+
+        // Delete tags in DB that are not in the request.
+        // Get tags that are not in the request.
+        $delete_tags = array_diff($post->categories()->pluck('title')->all(), $tags);
+        $new_tags = array_diff($tags, $post->categories()->pluck('title')->all());
+
+        // Delete removed tags.
+        foreach ($delete_tags as $tag) {
+            $tag_model = \App\Categories::where('title', $tag)->first();
+            $post->categories()->detach($tag_model);
+        }
+
+        // Save tags not already saved.
+        foreach ($new_tags as $tag) {
+            $tag_model = \App\Categories::firstOrCreate([
+                'title' => $tag
+            ]);
+
+            // Attach the tag to the post.
+            $post->categories()->attach($tag_model);
+        }
     }
 
     /**
@@ -112,6 +149,8 @@ class NewsController extends Controller
         $news->title = $request->title;
         $news->body = $request->body;
         $news->save();
+
+        $this->save_tags($request, $news);
 
         return redirect()->route('home');
     }

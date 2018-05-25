@@ -29,6 +29,7 @@ nav {
     display: flex;
     justify-content: center;
     background: #eee;
+    font-size: 15px;
 }
 
 nav a {
@@ -38,6 +39,7 @@ nav a {
 
 .container {
     padding: 20px;
+    padding-bottom: 80px;
     width: 700px;
     margin: 0 auto;
 }
@@ -77,9 +79,43 @@ label {
     color: #888;
 }
 
+button.action {
+    background: #2196F3;
+    padding: 12px 22px;
+    border-radius: 3px;
+    border: 0;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+}
+
+button.action:hover {
+    background: #1971b7;
+}
+
 .date {
-    font-size: 0.8em;
+    /*font-size: 0.8em;*/
     color: #999;
+    margin-right: 12px;
+    padding-top: 2px;
+}
+
+.details {
+    font-size: 0.9em;
+    margin-bottom: 1em;
+    display: flex;
+}
+
+.details a {
+    background: #eee;
+    padding: 2px 4px;
+    margin-right: 6px;
+    font-size: 0.9em;
+}
+
+.details a:hover {
+    background: #e5e5e5;
 }
 
 .admin_bar {
@@ -118,7 +154,6 @@ p {
 }
 
 #news_body {
-    font-family: Tinos;
 }
 
 @media only all and (max-width: 700px) {

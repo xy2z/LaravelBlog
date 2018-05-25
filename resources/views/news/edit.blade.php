@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Edit News Post')
+@section('title', 'Edit Post')
 
 @section('scripts')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.7.13/tinymce.min.js"></script>
@@ -11,12 +11,12 @@
 
 
 @section('content')
-    <h1>Edit post</h1>
+    <h1>Edit Post</h1>
 
     @include('assets/errors')
 
     <form method="post" action="/news/edit/{{ $news->pretty_url }}">
         @include('news._form')
-        <button>Save changes</button>
+        <button class="action">Save changes</button>
     </form>
 @endsection

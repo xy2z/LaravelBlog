@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Create News Post')
+@section('title', 'Create Post')
 
 @section('scripts')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.7.13/tinymce.min.js"></script>
@@ -8,12 +8,12 @@
 @endsection
 
 @section('content')
-    <h1>Create new post!</h1>
+    <h1>Create Post</h1>
 
     @include('assets/errors')
 
     <form method="post" action="/news/create">
         @include('news._form')
-        <button>Publish</button>
+        <button class="action">Publish</button>
     </form>
 @endsection

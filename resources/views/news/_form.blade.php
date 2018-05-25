@@ -12,5 +12,13 @@
 
 <br />
 
+<label for="form_tags">Tags</label>
+<input type="text" name="tags" id="form_tags" value="{{ old('tags', (isset($news) ? $news->categories_string() : '')) }}" />
+<br />
+
+<br />
+
 <label for="form_pretty_url">Body</label>
 <textarea name="body">{{ old('body', $news->body ?? '') }}</textarea>
+
+<br />
