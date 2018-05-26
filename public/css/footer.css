@@ -1,7 +1,10 @@
 footer {
-	background: #999;
+	width: 100%;
+	background: #ddd;
 	padding: 40px 0;
 	text-align: center;
 	font-size: 0.8em;
-	color: #444;
+	color: #888;
+	letter-spacing: 0.1em;
+	margin-top: auto;
 }

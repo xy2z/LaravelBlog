@@ -19,14 +19,16 @@
             <a href="/">xy2z Laravel 5.6 Blog</a>
         </header>
 
-        <nav>
-            <a href="/">Home</a>
-            <a target="_blank" href="/feed">Feed</a>
-            @if (Auth::check())
-                <a href="/news/create">Create Post</a>
-                <a href="/logout">Logout ({{ Auth::user()->name }})</a>
-            @endif
-        </nav>
+        <div>
+            <nav>
+                <a href="/">Home</a>
+                <a target="_blank" href="/feed">Feed</a>
+                @if (Auth::check())
+                    <a href="/news/create">Create Post</a>
+                    <a href="/logout">Logout ({{ Auth::user()->name }})</a>
+                @endif
+            </nav>
+        </div>
 
         @if ($flash = session('message'))
             <div class="alert">

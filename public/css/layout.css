@@ -3,10 +3,15 @@ body, html {
     padding: 0;
     font-size: 15px;
     font-size: 16px;
+    height: 100%;
+    min-height: 100%;
 }
 
 body {
     font-family: Tahoma;
+    /*position: relative;*/
+    display:flex;
+    flex-direction:column;
 }
 
 * {
@@ -14,8 +19,9 @@ body {
 }
 
 header {
-    background: #444;
+    /*background: #444;*/
     /*color: #eee;*/
+    background: #eee;
     text-align: center;
     font-size: 32px;
     padding: 1em 0;
@@ -23,12 +29,13 @@ header {
 
 header a {
     color: #eee;
+    color: #678;
 }
 
 nav {
     display: flex;
     justify-content: center;
-    background: #eee;
+    border-bottom: 3px solid #eee;
     font-size: 15px;
 }
 
@@ -38,8 +45,7 @@ nav a {
 }
 
 .container {
-    padding: 20px;
-    padding-bottom: 80px;
+    padding: 60px 20px 80px;
     width: 700px;
     margin: 0 auto;
 }
@@ -57,7 +63,7 @@ hr {
     width: 100%;
     border: 0;
     height: 1px;
-    background: #ccc;
+    background: #ddd;
 }
 
 input {
@@ -131,21 +137,23 @@ button.action:hover {
 
 
 h1 {
-    font-size: 1.7em;
+    font-size: 1.8em;
     font-family: Montserrat;
 }
 
 h2 {
     font-size: 1.45em;
     font-family: Montserrat;
+    color: #333;
 }
 
 h2 a {
-    color: #000;
+    color: #333;
 }
 
 h3 {
     font-size: 1.2em;
+    color: #444;
 }
 
 p {
@@ -153,7 +161,23 @@ p {
     margin-bottom: 1.8em !important;
 }
 
+#disqus_thread {
+    border-top: 1px solid #ddd;
+    margin-top: 5em;
+}
+
 #news_body {
+}
+
+.news_list article {
+    padding: 20px 0;
+    margin: 0;
+    /*margin-bottom: 3.5em;*/
+}
+
+.news_list h2 {
+    /*margin-top: 2em;*/
+    margin-bottom: 0.5em;
 }
 
 @media only all and (max-width: 700px) {

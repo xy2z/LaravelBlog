@@ -16,7 +16,7 @@ class NewsController extends Controller
 
     public function feed() {
         $view = view('feed', [
-            'news' => News::latest()->limit(2)->get()
+            'news' => News::latest()->limit(10)->get()
         ]);
         return response($view)->header('Content-Type', 'application/rss+xml');
     }

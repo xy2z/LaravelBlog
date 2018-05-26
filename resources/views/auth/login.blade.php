@@ -10,12 +10,16 @@
     <form method="post">
         {{ csrf_field() }}
 
-        E-mail:<br />
+        <label for="form_email">E-mail</label>
         <input type="text" name="email" autofocus required value="{{ old('email') }}" /><br />
+
         <br />
-        Password:<br />
+
+        <label for="form_email">Password</label>
         <input type="password" name="password" required /><br />
+
         <br />
-        <button type="submit">Login</button>
+
+        <button type="submit" class="action">Login</button>
     </form>
 @endsection

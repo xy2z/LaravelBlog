@@ -9,7 +9,9 @@ class CategoriesController extends Controller
 {
     public function index(Categories $category) {
 
-    	$news = \App\News::get();
+    	$news = \App\News::whereHas('categories', function($query) use ($category) {
+    		$query->where('categories.id', $category->id);
+    	})->get();
     	// return $news;
 
     	return view('news.categories.index', [
