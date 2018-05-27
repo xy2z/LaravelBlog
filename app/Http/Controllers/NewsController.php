@@ -84,9 +84,16 @@ class NewsController extends Controller
 
         // Request has tags.
         // Format tags.
-        $tags = explode(',', $request->tags);
-        foreach ($tags as $key => $tag) {
-            $tags[$key] = trim($tag);
+        $request_tags = explode(',', $request->tags);
+        $tags = [];
+        foreach ($request_tags as $key => $tag) {
+            $tag = trim($tag);
+            if ($tag == '') {
+                // Empty tag.
+                continue;
+            }
+
+            $tags[] = trim($tag);
         }
 
         // Delete tags in DB that are not in the request.

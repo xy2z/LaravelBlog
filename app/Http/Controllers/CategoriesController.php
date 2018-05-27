@@ -11,8 +11,7 @@ class CategoriesController extends Controller
 
     	$news = \App\News::whereHas('categories', function($query) use ($category) {
     		$query->where('categories.id', $category->id);
-    	})->get();
-    	// return $news;
+    	})->latest()->get();
 
     	return view('news.categories.index', [
     		'category' => $category,
