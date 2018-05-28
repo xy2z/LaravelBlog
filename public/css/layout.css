@@ -24,7 +24,7 @@ header {
     background: #eee;
     text-align: center;
     font-size: 32px;
-    padding: 1em 0;
+    padding: 1em 0 0.5em;
 }
 
 header a {
@@ -33,15 +33,16 @@ header a {
 }
 
 nav {
+    margin-top: 1.5em;
     display: flex;
     justify-content: center;
-    border-bottom: 3px solid #eee;
     font-size: 15px;
 }
 
 nav a {
     display: block;
-    padding: 10px 20px;
+    padding: 10px 22px;
+    letter-spacing: 0.05em;
 }
 
 .container {
@@ -125,16 +126,20 @@ button.action:hover {
 }
 
 .admin_bar {
-    background: #ffc;
-    padding: 8px;
+    background: #f1f1e4;
+    padding: 8px 10px;
     font-size: 0.9em;
-    opacity: 0.6;
+    opacity: 0.8;
+    margin-bottom: 1em;
 }
 
-.admin_bar:hover {
-    opacity: 1;
+.warning {
+    background: #fbef96;
+    padding: 8px 10px;
+    font-size: 0.9em;
+    margin-bottom: 1em;
+    color: #900;
 }
-
 
 h1 {
     font-size: 1.8em;
@@ -178,6 +183,14 @@ p {
 .news_list h2 {
     /*margin-top: 2em;*/
     margin-bottom: 0.5em;
+}
+
+.pagination {
+    margin-top: 4em;
+    padding-top: 2em;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
 }
 
 @media only all and (max-width: 700px) {

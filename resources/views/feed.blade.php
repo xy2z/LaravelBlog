@@ -3,7 +3,7 @@
   <channel>
     <title><![CDATA[Feed]]></title>
     <description><![CDATA[]]></description>
-    <link><![CDATA[{{ URL::to('/') }}]]></link>
+    <link><![CDATA[{{ URL::route('home') }}]]></link>
     <language><![CDATA[en]]></language>
 
     @foreach ($news as $row)

@@ -6,7 +6,7 @@
             <div class="details">
                 <div class="date">{{ $row->created_at->format('M j, Y') }}</div>
                 @forelse ($row->categories as $category)
-                    <a href="/news/tags/{{ strtolower($category->title) }}">{{ $category->title }}</a>
+                    <a href="/news/tags/{{ $category->slug() }}">{{ $category->title }}</a>
                 @empty
                     No tags...
                 @endforelse

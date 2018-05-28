@@ -18,6 +18,12 @@
 
 <br />
 
+<input type="checkbox" name="published" id="form_published" style="width: auto;" {{ (old('published') || (isset($news) && $news->published) ? 'checked="checked"' : '') }} />
+<label for="form_published">Published</label>
+<br />
+
+<br />
+
 <label for="form_pretty_url">Body</label>
 <textarea name="body">{{ old('body', $news->body ?? '') }}</textarea>
 

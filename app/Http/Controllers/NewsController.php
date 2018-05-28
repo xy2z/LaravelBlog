@@ -16,7 +16,7 @@ class NewsController extends Controller
 
     public function feed() {
         $view = view('feed', [
-            'news' => News::latest()->limit(10)->get()
+            'news' => News::latest()->where('published', 1)->limit(10)->get()
         ]);
         return response($view)->header('Content-Type', 'application/rss+xml');
     }
@@ -29,7 +29,13 @@ class NewsController extends Controller
     public function index()
     {
         return view('news.index', [
-            'news' => News::with('categories')->latest()->get()
+            'news' => News::with('categories')->where('published', 1)->latest()->simplePaginate(5)
+        ]);
+    }
+
+    public function index_unpublished() {
+        return view('news.index_unpublished', [
+            'news' => News::with('categories')->where('published', 0)->latest()->simplePaginate(10)
         ]);
     }
 
@@ -55,7 +61,7 @@ class NewsController extends Controller
         $valid = Validator::make($request->all(), [
             'title' => 'required|min:2|max:255',
             'pretty_url' => 'required|min:2|max:255',
-            'body' => 'required|min:2'
+            'body' => 'required|min:2',
         ]);
 
         if ($valid->fails()) {
@@ -66,6 +72,7 @@ class NewsController extends Controller
         $post->title = $request->title;
         $post->pretty_url = $request->pretty_url;
         $post->body = $request->body;
+        $post->published = isset($request->published);
         $post->user_id = 1;
         $post->save();
 
@@ -155,6 +162,7 @@ class NewsController extends Controller
     {
         $news->title = $request->title;
         $news->body = $request->body;
+        $news->published = isset($request->published);
         $news->save();
 
         $this->save_tags($request, $news);

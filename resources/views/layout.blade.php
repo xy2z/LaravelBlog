@@ -12,23 +12,22 @@
         <link rel="stylesheet" type="text/css" href="/css/layout.css">
         <link rel="stylesheet" type="text/css" href="/css/footer.css">
         <link rel="stylesheet" type="text/css" href="/css/errors.css">
+        <link rel="alternate" type="application/rss+xml" href="{{ URL::route('feed') }}" />
     </head>
 
     <body>
         <header>
             <a href="/">xy2z Laravel 5.6 Blog</a>
-        </header>
-
-        <div>
             <nav>
                 <a href="/">Home</a>
                 <a target="_blank" href="/feed">Feed</a>
                 @if (Auth::check())
                     <a href="/news/create">Create Post</a>
+                    <a href="/news/unpublished">Unpublished</a>
                     <a href="/logout">Logout ({{ Auth::user()->name }})</a>
                 @endif
             </nav>
-        </div>
+        </header>
 
         @if ($flash = session('message'))
             <div class="alert">

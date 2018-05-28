@@ -2,6 +2,7 @@
 
 
 Route::get('/', 'NewsController@index')->name('home');
+Route::get('/news/unpublished', 'NewsController@index_unpublished')->name('unpublished');
 Route::get('/news', function() {
 	return redirect()->route('home');
 });
