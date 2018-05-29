@@ -1,0 +1,9 @@
+version: '3.4'
+
+web:
+    build: .
+    restart: always
+    volumes:
+        - ".:/app"
+    ports:
+        - 82:80
