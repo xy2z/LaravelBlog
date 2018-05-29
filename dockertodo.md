@@ -1,0 +1,4 @@
+- setup.sh script to run composer install, .env file, database.
+- .env file
+- database.sqlite file (touch) - only if not exists.
+- chmod database.sqlite
