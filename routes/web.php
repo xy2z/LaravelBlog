@@ -6,6 +6,7 @@ Route::get('/news/unpublished', 'NewsController@index_unpublished')->name('unpub
 Route::get('/news', function() {
 	return redirect()->route('home');
 });
+
 // Create
 Route::get('/news/create', 'NewsController@create');
 Route::post('/news/create', 'NewsController@store')->name('post.create');
@@ -20,7 +21,7 @@ Route::get('/news/{news}', 'NewsController@show');
 Route::get('/feed', 'NewsController@feed')->name('feed');
 
 // Tags
-Route::get('/news/tags/{category}', 'CategoriesController@index');
+Route::get('/news/tags/{category_slug}', 'CategoriesController@index');
 
 // Auth
 Route::get('/login', 'LoginController@index')->name('login');

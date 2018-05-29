@@ -89,24 +89,39 @@ class NewsController extends Controller
             return;
         }
 
+        // Existing Categories.
+        $existing_tags = $array = array_map('strtolower', $post->categories()->pluck('title')->all());
+
         // Request has tags.
         // Format tags.
         $request_tags = explode(',', $request->tags);
-        $tags = [];
+        $keep_tags = [];
+        $new_tags = [];
         foreach ($request_tags as $key => $tag) {
             $tag = trim($tag);
+            $tag_key = strtolower($tag);
+
             if ($tag == '') {
                 // Empty tag.
                 continue;
             }
 
-            $tags[] = trim($tag);
+            if (isset($keep_tags[$tag_key]) || isset($new_tags[$tag_key])) {
+                // Already added.
+                continue;
+            }
+
+            // Check if tag exists.
+            if (in_array(strtolower($tag), $existing_tags)) {
+                $keep_tags[$tag_key] = strtolower($tag);
+            } else {
+                $new_tags[$tag_key] = $tag;
+            }
         }
 
+
         // Delete tags in DB that are not in the request.
-        // Get tags that are not in the request.
-        $delete_tags = array_diff($post->categories()->pluck('title')->all(), $tags);
-        $new_tags = array_diff($tags, $post->categories()->pluck('title')->all());
+        $delete_tags = array_diff($existing_tags, array_merge($new_tags, $keep_tags));
 
         // Delete removed tags.
         foreach ($delete_tags as $tag) {

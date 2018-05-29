@@ -13,8 +13,12 @@ class Categories extends Model
     	return 'title';
     }
 
-    function slug() {
+    public function slug() {
         return urlencode(strtolower($this->title));
+    }
+
+    static public function unslug(string $slug) {
+        return urldecode($slug);
     }
 
     public function news() {
