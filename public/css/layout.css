@@ -19,8 +19,9 @@ body {
 }
 
 header {
-    background: #eee;
-    background: url(/img/header.png);
+    background-color: #eee;
+    background-image: url(/img/header.png);
+    background-repeat: repeat-x;
     text-align: center;
     font-size: 32px;
     padding: 1em 0 0.5em;
@@ -206,7 +207,18 @@ p {
 }
 
 @media only all and (max-width: 700px) {
+    nav {
+        flex-direction: column;
+    }
+
     .container {
         width: 100%;
+    }
+
+    .flash {
+        width: 100%;
+        top: 0;
+        right: auto;
+        text-align: center;
     }
 }
