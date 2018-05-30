@@ -79,7 +79,8 @@ class NewsController extends Controller
         $this->save_tags($request, $post);
 
         // Redirect to home.
-        return redirect('/');
+        session()->flash('message', 'Post created');
+        return redirect('/news/' . $post->pretty_url);
     }
 
     private function save_tags(Request $request, News $post) {
@@ -181,7 +182,7 @@ class NewsController extends Controller
         $news->save();
 
         $this->save_tags($request, $news);
-
+        session()->flash('message', 'Post updated');
         return redirect()->route('home');
     }
 

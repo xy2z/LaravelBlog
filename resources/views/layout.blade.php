@@ -30,7 +30,7 @@
         </header>
 
         @if ($flash = session('message'))
-            <div class="alert">
+            <div class="flash">
                 {{ $flash }}
             </div>
         @endif
