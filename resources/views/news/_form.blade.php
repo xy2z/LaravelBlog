@@ -24,6 +24,12 @@
 
 <br />
 
+<input type="checkbox" name="allow_comments" id="form_allow_comments" style="width: auto;" {{ (old('allow_comments') || (isset($news) && $news->allow_comments) ? 'checked="checked"' : '') }} />
+<label for="form_allow_comments">Allow comments</label>
+<br />
+
+<br />
+
 <label for="form_pretty_url">Body</label>
 <textarea name="body">{{ old('body', $news->body ?? '') }}</textarea>
 

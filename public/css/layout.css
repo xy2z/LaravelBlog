@@ -118,10 +118,12 @@ button.action:hover {
     padding: 2px 4px;
     margin-right: 6px;
     font-size: 0.9em;
+    color: #999;
 }
 
 .details a:hover {
     background: #e5e5e5;
+    text-decoration: none;
 }
 
 .admin_bar {

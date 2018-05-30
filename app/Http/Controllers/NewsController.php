@@ -73,6 +73,7 @@ class NewsController extends Controller
         $post->pretty_url = $request->pretty_url;
         $post->body = $request->body;
         $post->published = isset($request->published);
+        $post->allow_comments = isset($request->allow_comments);
         $post->user_id = 1;
         $post->save();
 
@@ -179,11 +180,12 @@ class NewsController extends Controller
         $news->title = $request->title;
         $news->body = $request->body;
         $news->published = isset($request->published);
+        $news->allow_comments = isset($request->allow_comments);
         $news->save();
 
         $this->save_tags($request, $news);
         session()->flash('message', 'Post updated');
-        return redirect()->route('home');
+        return redirect('/news/' . $news->pretty_url);
     }
 
     /**

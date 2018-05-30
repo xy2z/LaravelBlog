@@ -34,7 +34,7 @@
         </div>
     </article>
 
-    @include('news.disqus_comments', ['id' => $news->id])
+    @includeWhen($news->allow_comments, 'news.disqus_comments', ['id' => $news->id])
     @include('news._back')
 
 @endsection
