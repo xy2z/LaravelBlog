@@ -116,15 +116,16 @@ button.action:hover {
 }
 
 .details a {
-    background: #eee;
-    padding: 2px 4px;
+    margin-top: 1px;
+    background: #f6f6f6;
+    padding: 1px 3px;
     margin-right: 6px;
     font-size: 0.9em;
-    color: #999;
+    color: #aaa;
 }
 
 .details a:hover {
-    background: #e5e5e5;
+    background: #eee;
     text-decoration: none;
 }
 
