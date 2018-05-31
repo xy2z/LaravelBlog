@@ -30,6 +30,7 @@ header {
 header a {
     color: #eee;
     color: #678;
+    letter-spacing: 10px;
 }
 
 nav {

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
         @yield('css')
-        <title>@yield('title') | xy2z Blog</title>
+        <title>@yield('title') | {{ env('APP_NAME') }}</title>
 
         <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/css/layout.css">
@@ -17,7 +17,7 @@
 
     <body>
         <header>
-            <a href="/">xy2z Laravel 5.6 Blog</a>
+            <a href="/">{{ env('APP_NAME') }}</a>
             <nav>
                 <a href="/">Home</a>
                 <a target="_blank" href="/feed">Feed</a>
